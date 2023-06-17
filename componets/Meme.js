@@ -1,10 +1,12 @@
 import React from 'react';
 import memesData from './../data/memeData.js';
 const Meme = () => {
+  const [memeimage, memeimageState] = React.useState(
+    'https://i.imgflip.com/1x6f.jpg'
+  );
   const randomMemeImage = () => {
     const memeArr = memesData.data.memes;
-    const rand = Math.floor(Math.random() * memeArr.length);
-    console.log(memeArr[rand].url);
+    memeimageState(memeArr[Math.floor(Math.random() * memeArr.length)].url);
   };
   return (
     <main>
@@ -15,6 +17,7 @@ const Meme = () => {
           Add caption
         </button>
       </div>
+      <img src={memeimage} alt="meme_image_tobe_captioned" />
     </main>
   );
 };
